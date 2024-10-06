@@ -17,7 +17,7 @@ public class SqldemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-			createStudent(studentDAO);
+			createMultipleStudents(studentDAO);
 		};
 	}
 
@@ -31,5 +31,18 @@ public class SqldemoApplication {
 		studentDAO.save(tempStudent);
 		//display id of the saved student
 		System.out.println("saved student. ID is: " + tempStudent.getId());
+	}
+
+	private void createMultipleStudents(StudentDAO studentDAO) {
+
+		System.out.println("creating multiple students");
+		Student tempStudent1 = new Student("Paul", "Doe", "this.is@sparta.com");
+		Student tempStudent2 = new Student("Mary", "Dawn", "hey.ho@lets.go");
+		Student tempStudent3 = new Student("Paul", "brown", "yay@yoy.com");
+
+		//saving them
+		studentDAO.save(tempStudent1);
+		studentDAO.save(tempStudent2);
+		studentDAO.save(tempStudent3);
 	}
 }
