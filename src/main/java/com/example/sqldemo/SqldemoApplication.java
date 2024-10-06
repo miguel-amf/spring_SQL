@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class SqldemoApplication {
 
@@ -17,8 +19,41 @@ public class SqldemoApplication {
 	@Bean
 	public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
 		return runner -> {
-			createMultipleStudents(studentDAO);
+			//createStudent(studentDAO);
+
+			//createMultipleStudents(studentDAO);
+
+			//readStudent(studentDAO);
+
+			queryForStudents(studentDAO);
 		};
+	}
+
+	private void queryForStudents(StudentDAO studentDAO) {
+
+		//get a list of students
+		List<Student> theStudents = studentDAO.findAll();
+		//display list
+		for (Student e : theStudents) {
+			System.out.println(e);
+		}
+
+
+	}
+
+	private void readStudent(StudentDAO studentDAO) {
+		//create
+		Student newStudent = new Student("Find me", "If you can", "nowhere@tobefound.com");
+		//save
+		studentDAO.save(newStudent);
+		//display of saved
+		int theId = newStudent.getId();
+		System.out.println("The ID created was: " + theId);
+		//retrieve
+		Student retrieved = studentDAO.findById(theId);
+		//display found
+		System.out.println(retrieved);
+
 	}
 
 	private void createStudent(StudentDAO studentDAO) {
@@ -45,4 +80,5 @@ public class SqldemoApplication {
 		studentDAO.save(tempStudent2);
 		studentDAO.save(tempStudent3);
 	}
+
 }

@@ -20,7 +20,7 @@ public class Student {
     private String email;
     //define constructors
 
-    public void Student() {
+    public Student() {
 
     }
 
