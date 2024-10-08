@@ -25,7 +25,9 @@ public class SqldemoApplication {
 
 			//readStudent(studentDAO);
 
-			queryForStudents(studentDAO);
+			//queryForStudents(studentDAO);
+
+			queryForStudentsByLastName(studentDAO);
 		};
 	}
 
@@ -79,6 +81,17 @@ public class SqldemoApplication {
 		studentDAO.save(tempStudent1);
 		studentDAO.save(tempStudent2);
 		studentDAO.save(tempStudent3);
+	}
+
+	private void queryForStudentsByLastName(StudentDAO studentDAO) {
+
+		List<Student> s = studentDAO.findByLastName("Doe");
+
+		for (Student e : s) {
+			System.out.println(e);
+		}
+
+
 	}
 
 }
