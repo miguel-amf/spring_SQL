@@ -27,8 +27,22 @@ public class SqldemoApplication {
 
 			//queryForStudents(studentDAO);
 
-			queryForStudentsByLastName(studentDAO);
+			//queryForStudentsByLastName(studentDAO);
+
+			updateStudent(studentDAO);
 		};
+	}
+
+	private void updateStudent(StudentDAO studentDAO) {
+		//retrieve student
+		int studentID = 1;
+		Student theStudent = studentDAO.findById(studentID);
+		//update student
+		theStudent.setLastName("Bar");
+		//save student
+		studentDAO.update(theStudent);
+		//display changes
+		System.out.println(studentDAO.findById(1));
 	}
 
 	private void queryForStudents(StudentDAO studentDAO) {
