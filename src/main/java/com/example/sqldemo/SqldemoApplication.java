@@ -29,8 +29,15 @@ public class SqldemoApplication {
 
 			//queryForStudentsByLastName(studentDAO);
 
-			updateStudent(studentDAO);
+			//updateStudent(studentDAO);
+
+			deleteStudent(studentDAO);
 		};
+	}
+
+	private void deleteStudent(StudentDAO studentDAO) {
+		int delID = 1;
+		studentDAO.delete(delID);
 	}
 
 	private void updateStudent(StudentDAO studentDAO) {
